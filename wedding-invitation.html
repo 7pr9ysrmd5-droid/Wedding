@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nasir & Saadia — 04.07.2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+:root{
+  --noir:#0d0508;
+  --deep:#1a0b0f;
+  --wine:#3d0c18;
+  --rose:#6b1428;
+  --gold:#c9a84c;
+  --gold2:#e8d08a;
+  --gold3:#f5e9b8;
+  --ivory:#f8f3eb;
+  --ivory2:#ede6d8;
+}
+
+body{background:var(--noir);overflow-x:hidden;font-family:Georgia,'Times New Roman',serif;}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━
+   OPENING SEAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#opening{
+  position:fixed;inset:0;z-index:9999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--noir);cursor:pointer;
+  transition:opacity 1.4s ease;
+}
+#opening.away{opacity:0;pointer-events:none;}
+
+.stars{position:absolute;inset:0;overflow:hidden;}
+.star{
+  position:absolute;background:var(--gold);border-radius:50%;
+  animation:twinkle var(--dur) ease-in-out infinite;opacity:0;
+}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:.5;transform:scale(1)}}
+
+.env{position:relative;width:280px;height:196px;animation:hover-env 4s ease-in-out infinite;}
+@keyframes hover-env{0%,100%{transform:translateY(0) rotate(-.5deg)}50%{transform:translateY(-18px) rotate(.5deg)}}
+
+.env-back{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,#4a1020 0%,#2a0810 100%);
+  border-radius:2px;
+  box-shadow:0 0 0 1px rgba(201,168,76,.25),0 40px 80px rgba(0,0,0,.7);
+}
+.env-tri-l{position:absolute;bottom:0;left:0;width:0;height:0;border-bottom:98px solid rgba(15,4,8,.8);border-right:140px solid transparent;}
+.env-tri-r{position:absolute;bottom:0;right:0;width:0;height:0;border-bottom:98px solid rgba(15,4,8,.8);border-left:140px solid transparent;}
+.env-tri-t{position:absolute;top:0;left:0;width:0;height:0;border-left:140px solid transparent;border-right:140px solid transparent;border-top:98px solid rgba(55,10,22,.9);}
+
+.wax{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:76px;height:76px;
+  background:radial-gradient(circle at 36% 33%,#f5e9b8,#c9a84c 50%,#7a5a18 80%,#4a3808);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 8px rgba(201,168,76,.12),0 0 0 16px rgba(201,168,76,.05),0 8px 30px rgba(0,0,0,.5);
+  z-index:2;
+  animation:wax-glow 3s ease-in-out infinite;
+}
+@keyframes wax-glow{0%,100%{box-shadow:0 0 0 8px rgba(201,168,76,.12),0 0 0 16px rgba(201,168,76,.05),0 8px 30px rgba(0,0,0,.5)}50%{box-shadow:0 0 0 12px rgba(201,168,76,.2),0 0 0 22px rgba(201,168,76,.08),0 12px 40px rgba(0,0,0,.5)}}
+
+.wax-text{font-size:22px;color:#1a0808;font-family:Georgia,serif;font-style:italic;letter-spacing:1px;}
+
+.tap-text{
+  margin-top:48px;font-size:11px;letter-spacing:5px;
+  color:rgba(201,168,76,.4);text-transform:uppercase;font-family:Georgia,serif;
+  animation:breathe 2.5s ease-in-out infinite;
+}
+@keyframes breathe{0%,100%{opacity:.2}50%{opacity:.8}}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━
+   INVITATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#invite{display:none;}
+#invite.show{display:block;}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  background:var(--noir);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:70px 28px 80px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;
+  top:-200px;left:50%;transform:translateX(-50%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse,rgba(201,168,76,.08) 0%,transparent 70%);
+}
+.hero::after{
+  content:'';position:absolute;
+  bottom:-100px;left:50%;transform:translateX(-50%);
+  width:500px;height:300px;
+  background:radial-gradient(ellipse,rgba(61,12,24,.9) 0%,transparent 70%);
+}
+
+/* Concentric rings */
+.ring{
+  position:absolute;border-radius:50%;
+  border:1px solid rgba(201,168,76,.05);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+}
+
+.hero-inner{position:relative;z-index:2;}
+
+.bism{
+  font-family:'Traditional Arabic','Arabic Typesetting','Scheherazade New',Arial,serif;
+  font-size:26px;color:rgba(201,168,76,.6);letter-spacing:2px;margin-bottom:44px;
+}
+
+.orule{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 auto 44px;}
+.orule-l{width:90px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.5));}
+.orule-r{width:90px;height:1px;background:linear-gradient(90deg,rgba(201,168,76,.5),transparent);}
+.orule-d{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);opacity:.7;}
+
+.together{
+  font-size:10px;letter-spacing:6px;color:rgba(201,168,76,.4);
+  text-transform:uppercase;margin-bottom:32px;font-family:Georgia,serif;
+}
+
+/* Names using elegant serif */
+.n1,.n2{
+  font-size:clamp(64px,17vw,108px);
+  color:#ffffff;
+  line-height:.9;
+  letter-spacing:3px;
+  font-family:Georgia,'Times New Roman',serif;
+  font-style:italic;
+  font-weight:normal;
+  text-shadow:0 0 80px rgba(201,168,76,.12);
+}
+
+.amp-hero{
+  font-size:clamp(36px,9vw,58px);
+  color:var(--gold);display:block;
+  margin:14px 0;opacity:.75;
+  font-family:Georgia,serif;font-style:italic;font-weight:300;
+}
+
+.orule2{display:flex;align-items:center;justify-content:center;gap:10px;margin:48px auto 38px;}
+
+.hero-date{
+  font-size:clamp(13px,3.5vw,17px);letter-spacing:5px;
+  color:rgba(255,255,255,.35);font-family:Georgia,serif;
+}
+.hero-date .hl{color:var(--gold2);opacity:.9;}
+
+.scroll-cue{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:rgba(255,255,255,.18);font-size:9px;letter-spacing:3px;font-family:Georgia,serif;
+  animation:float-cue 2s ease-in-out infinite;
+}
+@keyframes float-cue{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+.scroll-cue::after{content:'↓';font-size:18px;}
+
+/* ── IVORY SECTION ── */
+.sec-ivory{
+  background:var(--ivory);padding:90px 28px;text-align:center;position:relative;overflow:hidden;
+}
+.sec-ivory::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(0,0,0,.02) 79px,rgba(0,0,0,.02) 80px),
+    repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(0,0,0,.02) 79px,rgba(0,0,0,.02) 80px);
+}
+.sec-inner{max-width:520px;margin:0 auto;position:relative;z-index:1;}
+
+.eyebrow{font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:18px;font-family:Georgia,serif;}
+.heading{
+  font-size:clamp(38px,10vw,60px);color:var(--wine);line-height:1.1;margin-bottom:28px;
+  font-family:Georgia,serif;font-style:italic;font-weight:normal;
+}
+.thin-rule{width:1px;height:60px;background:linear-gradient(180deg,transparent,var(--gold),transparent);margin:0 auto 28px;}
+.invite-body{font-size:18px;line-height:2.2;color:#5a3040;font-style:italic;font-family:Georgia,serif;}
+
+/* ── DARK SECTION ── */
+.sec-dark{
+  background:var(--deep);padding:90px 28px;text-align:center;position:relative;overflow:hidden;
+}
+.sec-dark::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 0% 50%,rgba(61,12,24,.5) 0%,transparent 50%),
+  radial-gradient(ellipse at 100% 50%,rgba(61,12,24,.5) 0%,transparent 50%);
+}
+.sec-dark-inner{max-width:520px;margin:0 auto;position:relative;z-index:1;}
+
+.card{
+  margin:22px 0;padding:40px 28px;
+  border:1px solid rgba(201,168,76,.14);
+  background:rgba(255,255,255,.025);position:relative;
+}
+.card::after{content:'';position:absolute;inset:7px;border:1px solid rgba(201,168,76,.07);pointer-events:none;}
+.card::before{content:'';position:absolute;width:20px;height:20px;top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);opacity:.5;}
+.card-br{position:absolute;width:20px;height:20px;bottom:-1px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);opacity:.5;}
+
+.card-icon{font-size:22px;display:block;margin-bottom:14px;}
+.card-lbl{font-size:9px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:14px;font-family:Georgia,serif;}
+.card-val{font-weight:normal;font-size:28px;color:#fff;margin-bottom:6px;font-family:Georgia,serif;font-style:italic;}
+.card-sub{font-size:15px;color:rgba(255,255,255,.35);font-style:italic;font-family:Georgia,serif;}
+
+/* Countdown */
+.cd-wrap{margin-top:56px;}
+.cd-lbl{font-size:9px;letter-spacing:4px;color:rgba(201,168,76,.5);text-transform:uppercase;margin-bottom:20px;font-family:Georgia,serif;}
+.cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:360px;margin:0 auto;}
+.cd-box{border:1px solid rgba(201,168,76,.12);padding:20px 4px;background:rgba(0,0,0,.2);}
+.cd-n{font-size:32px;color:#fff;display:block;line-height:1;font-family:Georgia,serif;}
+.cd-u{font-size:8px;letter-spacing:2px;color:var(--gold);display:block;margin-top:6px;text-transform:uppercase;font-family:Georgia,serif;}
+
+.h-rule{display:flex;align-items:center;gap:10px;justify-content:center;margin:30px auto;}
+.h-line-l{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
+.h-line-r{width:70px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);}
+.h-dia{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);}
+
+/* ── VENUE ── */
+.sec-venue{background:var(--ivory2);padding:90px 28px;text-align:center;position:relative;overflow:hidden;}
+.venue-frame{
+  max-width:480px;margin:36px auto 0;
+  border:1px solid rgba(61,12,24,.15);
+  background:#fff;padding:52px 32px;position:relative;
+  box-shadow:0 8px 50px rgba(61,12,24,.07);
+}
+.venue-frame::before{content:'';position:absolute;top:14px;left:14px;right:14px;bottom:14px;border:1px solid rgba(201,168,76,.18);pointer-events:none;}
+
+.venue-name{
+  font-size:clamp(40px,10vw,64px);color:var(--wine);line-height:1;margin-bottom:8px;
+  font-family:Georgia,serif;font-style:italic;font-weight:normal;
+}
+.venue-city{font-size:11px;letter-spacing:5px;color:rgba(61,12,24,.4);text-transform:uppercase;margin-bottom:32px;font-family:Georgia,serif;}
+.venue-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid var(--wine);color:var(--wine);
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  padding:14px 30px;text-decoration:none;transition:all .35s;font-family:Georgia,serif;
+}
+.venue-btn:hover{background:var(--wine);color:#fff;}
+
+/* ── CLOSING ── */
+.sec-close{
+  background:var(--noir);padding:100px 28px;text-align:center;position:relative;overflow:hidden;
+}
+.sec-close::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 100%,rgba(61,12,24,.8) 0%,transparent 55%),
+  radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.04) 0%,transparent 50%);
+}
+.close-inner{position:relative;z-index:1;max-width:460px;margin:0 auto;}
+.close-heart{font-size:52px;display:block;margin-bottom:28px;animation:hb 2.2s ease-in-out infinite;}
+@keyframes hb{0%,100%{transform:scale(1)}20%{transform:scale(1.15)}40%{transform:scale(1)}}
+.close-heading{
+  font-size:clamp(50px,13vw,80px);color:#fff;margin-bottom:28px;
+  font-family:Georgia,serif;font-style:italic;font-weight:normal;
+  text-shadow:0 0 60px rgba(201,168,76,.15);
+}
+.close-body{font-style:italic;font-size:18px;color:rgba(255,255,255,.4);line-height:2.2;margin-bottom:44px;font-family:Georgia,serif;}
+.blessing{font-size:22px;color:var(--gold2);line-height:2.2;font-family:'Traditional Arabic','Arabic Typesetting',Arial,serif;}
+
+footer{
+  background:#060204;padding:24px;text-align:center;
+  font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.15);font-family:Georgia,serif;
+}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease;}
+.reveal.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<!-- OPENING -->
+<div id="opening" onclick="openIt()">
+  <div class="stars" id="stars"></div>
+  <div class="env">
+    <div class="env-back">
+      <div class="env-tri-t"></div>
+      <div class="env-tri-l"></div>
+      <div class="env-tri-r"></div>
+      <div class="wax"><span class="wax-text">N♡S</span></div>
+    </div>
+  </div>
+  <p class="tap-text">tap to open</p>
+</div>
+
+<!-- INVITATION -->
+<div id="invite">
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- rings -->
+    <div class="ring" style="width:300px;height:300px;margin-left:-150px;margin-top:-150px;"></div>
+    <div class="ring" style="width:500px;height:500px;margin-left:-250px;margin-top:-250px;"></div>
+    <div class="ring" style="width:700px;height:700px;margin-left:-350px;margin-top:-350px;"></div>
+    <div class="ring" style="width:900px;height:900px;margin-left:-450px;margin-top:-450px;"></div>
+
+    <div class="hero-inner">
+      <p class="bism">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+
+      <div class="orule">
+        <div class="orule-l"></div><div class="orule-d"></div><div class="orule-r"></div>
+      </div>
+
+      <p class="together">together with their families</p>
+
+      <div class="n1">Nasir</div>
+      <span class="amp-hero">&amp;</span>
+      <div class="n2">Saadia</div>
+
+      <div class="orule2">
+        <div class="orule-l"></div><div class="orule-d"></div><div class="orule-r"></div>
+      </div>
+
+      <div class="hero-date">
+        <span>Saturday</span> &nbsp;·&nbsp;
+        <span class="hl">04 · 07 · 2026</span>
+        &nbsp;·&nbsp; <span>Agadir</span>
+      </div>
+    </div>
+    <div class="scroll-cue">scroll</div>
+  </section>
+
+  <!-- INVITE TEXT -->
+  <section class="sec-ivory">
+    <div class="sec-inner">
+      <p class="eyebrow reveal">A Joyful Invitation</p>
+      <h2 class="heading reveal">With all our love</h2>
+      <div class="thin-rule reveal"></div>
+      <p class="invite-body reveal">
+        We joyfully invite you to celebrate<br>
+        the beginning of our life together<br>
+        and share with us the most beautiful<br>
+        moments of our lives.
+      </p>
+    </div>
+  </section>
+
+  <!-- DETAILS + COUNTDOWN -->
+  <section class="sec-dark">
+    <div class="sec-dark-inner">
+      <p class="eyebrow reveal" style="color:var(--gold);">The Details</p>
+      <h2 class="heading reveal" style="color:white;font-size:clamp(30px,8vw,46px);">Ceremony &amp; Reception</h2>
+
+      <div class="h-rule reveal">
+        <div class="h-line-l"></div><div class="h-dia"></div><div class="h-line-r"></div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-br"></div>
+        <span class="card-icon">📅</span>
+        <span class="card-lbl">Date</span>
+        <div class="card-val">Saturday, 4th July 2026</div>
+        <div class="card-sub">04 · 07 · 2026</div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-br"></div>
+        <span class="card-icon">🕕</span>
+        <span class="card-lbl">Reception begins</span>
+        <div class="card-val">18 : 00</div>
+        <div class="card-sub">Doors open from six o'clock in the evening</div>
+      </div>
+
+      <div class="cd-wrap reveal">
+        <p class="cd-lbl">Counting down to the big day</p>
+        <div class="cd-grid">
+          <div class="cd-box"><span class="cd-n" id="d">--</span><span class="cd-u">Days</span></div>
+          <div class="cd-box"><span class="cd-n" id="h">--</span><span class="cd-u">Hours</span></div>
+          <div class="cd-box"><span class="cd-n" id="m">--</span><span class="cd-u">Mins</span></div>
+          <div class="cd-box"><span class="cd-n" id="s">--</span><span class="cd-u">Secs</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section class="sec-venue">
+    <div style="position:relative;z-index:1;">
+      <p class="eyebrow reveal">Venue</p>
+      <h2 class="heading reveal" style="color:var(--wine);">Location &amp; Directions</h2>
+      <div class="h-rule reveal">
+        <div class="h-line-l" style="background:linear-gradient(90deg,transparent,rgba(61,12,24,.3));"></div>
+        <div class="h-dia" style="background:var(--wine);opacity:.4;"></div>
+        <div class="h-line-r" style="background:linear-gradient(90deg,rgba(61,12,24,.3),transparent);"></div>
+      </div>
+      <div class="venue-frame reveal">
+        <p style="font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:18px;font-family:Georgia,serif;">📍 ADDRESS</p>
+        <div class="venue-name">Villa Hollandi</div>
+        <div class="venue-city">Agadir · Kingdom of Morocco</div>
+        <a href="https://maps.app.goo.gl/g7DUXfqQgc4h6atLA" target="_blank" class="venue-btn">↗ &nbsp; Open in Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="sec-close">
+    <div class="close-inner">
+      <span class="close-heart reveal">🤍</span>
+      <h2 class="close-heading reveal">Thank You</h2>
+      <div class="h-rule reveal">
+        <div class="h-line-l" style="background:linear-gradient(90deg,transparent,rgba(201,168,76,.35));"></div>
+        <div class="h-dia"></div>
+        <div class="h-line-r" style="background:linear-gradient(90deg,rgba(201,168,76,.35),transparent);"></div>
+      </div>
+      <p class="close-body reveal">
+        Your presence is the greatest gift —<br>
+        it fills our hearts with joy<br>
+        and makes this day truly complete.
+      </p>
+      <p class="blessing reveal">
+        بارك الله لهما وبارك عليهما<br>وجمع بينهما في خير
+      </p>
+    </div>
+  </section>
+
+  <footer>Nasir &nbsp;·&nbsp; Saadia &nbsp;·&nbsp; 04 · 07 · 2026 &nbsp;·&nbsp; Villa Hollandi, Agadir</footer>
+</div>
+
+<script>
+// Stars
+(function(){
+  var c=document.getElementById('stars');
+  for(var i=0;i<60;i++){
+    var s=document.createElement('div');
+    s.className='star';
+    var sz=Math.random()*2.5+1;
+    s.style.cssText='width:'+sz+'px;height:'+sz+'px;top:'+Math.random()*100+'%;left:'+Math.random()*100+'%;--dur:'+(Math.random()*3+2)+'s;animation-delay:'+Math.random()*4+'s';
+    c.appendChild(s);
+  }
+})();
+
+function openIt(){
+  var o=document.getElementById('opening');
+  var iv=document.getElementById('invite');
+  o.classList.add('away');
+  setTimeout(function(){
+    o.style.display='none';
+    iv.style.display='block';
+    setTimeout(function(){
+      startCountdown();
+      initReveal();
+    },50);
+  },1400);
+}
+
+function startCountdown(){
+  var t=new Date('2026-07-04T18:00:00');
+  function go(){
+    var diff=Math.max(0,t-new Date());
+    document.getElementById('d').textContent=Math.floor(diff/86400000);
+    document.getElementById('h').textContent=pad(Math.floor(diff%86400000/3600000));
+    document.getElementById('m').textContent=pad(Math.floor(diff%3600000/60000));
+    document.getElementById('s').textContent=pad(Math.floor(diff%60000/1000));
+  }
+  function pad(n){return String(n).padStart(2,'0');}
+  go();setInterval(go,1000);
+}
+
+function initReveal(){
+  var els=document.querySelectorAll('.reveal');
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});
+  },{threshold:.1});
+  els.forEach(function(el){obs.observe(el);});
+}
+</script>
+</body>
+</html>
